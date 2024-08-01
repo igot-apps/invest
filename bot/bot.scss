@@ -1,0 +1,80 @@
+.bot-card {
+    --border-color: #B5B8BC;
+    --background-color-top-box: #28a745;
+    --text-color-main: #343a40;
+    --text-color-accent: #28a745;
+    --button-border-color: gray;
+    --button-hover-background: #ffffff;
+    --button-hover-text-color: #28a745;
+
+    border: 1px solid var(--border-color);
+    width: 300px;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+
+    span {
+        color: var(--border-color);
+    }
+
+    .h6, .deeptext {
+        color: var(--text-color-main);
+    }
+
+    .top-box {
+        background-color: var(--background-color-top-box);
+        width: 100px;
+        height: 50px;
+        padding: 20px;
+        border-right: 8px;
+        color: white;
+        position: relative;
+    }
+
+    .bot-body {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gains {
+        text-align: center;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .gains span {
+        color: var(--text-color-accent);
+        font-size: 1.5rem;
+    }
+
+    .coin-image img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+
+    .copy_button {
+        padding: 10px 20px;
+        background-color: transparent;
+        color: var(--text-color-main);
+        border: 2px solid var(--button-border-color);
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .copy_button:hover {
+        background-color: var(--button-hover-background);
+        color: var(--button-hover-text-color);
+        border-color: var(--button-hover-text-color);
+    }
+
+    .copy_button:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+}
