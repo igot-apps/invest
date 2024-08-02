@@ -216,16 +216,62 @@ section .d-flex .d-none {
   margin: 10px 0;
 }
 
-.myb {
-  background: pink;
-  color: white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.myb .rec {
-  width: 170px;
-  background: purple;
+
+.mybots {
+  background: #F8F9FA;
+  padding-bottom: 10px;
 }
-.myb .box1 {
-  border-right: 2px solid white;
+.mybots .rec {
+  width: 100%;
+  border: 2px solid #B5B8BC;
+  background: #0EB3B3;
+  border-bottom: #F8F9FA;
+  padding-left: 10px;
+}
+.mybots .box1:hover {
+  background-color: #0a8d8d; /* Darker shade on hover */
+}
+.mybots .box1 {
+  width: 110px; /* Adjusted width for better appearance */
+  background-color: #f1f1f1; /* Background color */
+  color: #333; /* Text color */
+  padding: 10px 20px; /* Padding for button size */
+  font-weight: bold; /* Bold text */
+  border: 1px solid #B5B8BC; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition on hover */
+}
+.mybots .box2 {
+  width: 120px; /* Adjusted width for better appearance */
+  background-color: #0EB3B3; /* Background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding for button size */
+  font-weight: bold; /* Bold text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition on hover */
+}
+.mybots .box2:hover {
+  background-color: #0a8d8d; /* Slightly darker shade on hover */
+}
+.mybots .mybots-list {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .text-center .heading {
