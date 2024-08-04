@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Example</title>
+  <style>
+    .invest {
+      display: none; /* Hide the invest section by default */
+    }
+  </style>
+  
+</head>
+<body>
+  <!-- Your button element -->
+  <button class="copy_button" id="copy_id_1">Copy</button>
+
+  <!-- Section to toggle -->
+  <div class="invest mt-3 d-flex align-items-center" id="invest_1">
+    <input type="number" class="form-control me-2" placeholder="Min: $10" min="10" step="0.01">
+    <button class="invest_button btn btn-primary">Invest</button>
+  </div>
+
+  <script>
+    // Function to toggle the visibility of the invest section
+    function toggleInvestSection() {
+      const investSection = document.getElementById('invest_1');
+      if (investSection) {
+        // Debugging: Check the current display style
+        console.log('Current display style:', investSection.style.display);
+
+        if (investSection.style.display === 'none' || investSection.style.display === '') {
+          investSection.style.display = 'flex'; // Show the section
+        } else {
+          investSection.style.display = 'none'; // Hide the section
+        }
+      } else {
+        console.error('Element with id "invest_1" not found.');
+      }
+    }
+
+    // Add event listener to the button
+    document.addEventListener('DOMContentLoaded', function() {
+      const copyButton = document.getElementById('copy_id_1');
+      if (copyButton) {
+        copyButton.addEventListener('click', toggleInvestSection);
+      } else {
+        console.error('Element with id "copy_id_1" not found.');
+      }
+    });
+  </script>
+</body>
+</html>
