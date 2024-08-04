@@ -86,7 +86,7 @@ header {
               display: flex;
               align-items: center;
           
-              button {
+              a {
                 background: none; // Remove default button background
                 border: none; // Remove default button border
                 font-size: 1rem; // Set font size
@@ -94,6 +94,7 @@ header {
                 cursor: pointer; // Change cursor to pointer to indicate clickability
                 padding: 0; // Remove default button padding
                 outline: none; // Remove default outline on focus
+                text-decoration: none;
           
                 &:hover {
                   color: $primary-color; // Darker color on hover

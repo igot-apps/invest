@@ -1,0 +1,73 @@
+.deposit {
+    margin-top: 20px;
+    background: #F8F9FA;
+
+    .inputs {
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 15px;
+        background-color: #f9f9f9;
+      }
+  
+      .inputs h6 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #333;
+
+      }
+  
+      .form-select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        background-color: #fff;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+  
+      .form-select option {
+        padding: 10px;
+      }
+
+      .deposit-detail {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+  
+      .deposit-detail h6 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: center;
+        font-weight: bold;
+      }
+  
+      .deposit-detail div {
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+      }
+  
+      .deposit-detail img {
+        display: block;
+        margin: 10px auto;
+        max-width: 100%;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+  
+      .deposit-detail .btc-address {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        word-break: break-all; /* To handle long addresses */
+      }
+}
