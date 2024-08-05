@@ -13,6 +13,19 @@
         
 
       }
+      .active-btn {
+      background-color: #089191 !important;
+      color: white !important;
+    }
+    .inactive-btn {
+      /* background-color: #e0e0e0; */
+      color: black;
+    }
+    .box1, .box2 {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
     </style>
     <title>Document</title>
 </head>
@@ -80,12 +93,12 @@
         
                 <div class="mybots">
                   <div class="rec d-flex">
-                    <div class="box1">Active</div>
-                    <div class="box2">completed</div>
+                    <div class="box1 active-btn" id="active-bots-btn">Active</div>
+                    <div class="box2" id="dead-bots-btn">completed</div>
                   </div>
 
                     <div class="d-flex justify-content-center">
-                      <div class="mybots-list d-flex flex-wrap hide">
+                      <div class="mybots-list d-flex flex-wrap hide" id="active-bots">
 
 
 
@@ -224,7 +237,7 @@
                         
 
                       </div>
-                      <div class="mybots-list d-flex flex-wrap">
+                      <div class="mybots-list d-flex flex-wrap" id="dead-bots">
 
 
 
@@ -233,7 +246,7 @@
                             <div class="d-flex justify-content-end">
                               <div class="top-box p-2">
                                 <!-- Dead bots -->
-                    
+                                 completed
                               </div>
                             </div>
                     
@@ -377,6 +390,36 @@
 
           
     </div>
+
+
+    <script>
+      // Get the buttons and the elements to show/hide
+      const activeBotsBtn = document.getElementById('active-bots-btn');
+      const deadBotsBtn = document.getElementById('dead-bots-btn');
+      const activeBots = document.getElementById('active-bots');
+      const deadBots = document.getElementById('dead-bots');
+  
+      // Function to update button styles
+      function updateButtonStyles(activeButton, inactiveButton) {
+        activeButton.classList.add('active-btn');
+        activeButton.classList.remove('inactive-btn');
+        inactiveButton.classList.add('inactive-btn');
+        inactiveButton.classList.remove('active-btn');
+      }
+  
+      // Add event listeners to the buttons
+      activeBotsBtn.addEventListener('click', () => {
+        activeBots.classList.remove('hide');
+        deadBots.classList.add('hide');
+        updateButtonStyles(activeBotsBtn, deadBotsBtn);
+      });
+  
+      deadBotsBtn.addEventListener('click', () => {
+        activeBots.classList.add('hide');
+        deadBots.classList.remove('hide');
+        updateButtonStyles(deadBotsBtn, activeBotsBtn);
+      });
+    </script>
     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
