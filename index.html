@@ -172,7 +172,32 @@ input[type="number"]::-ms-expand {
 
 
     <script>
-      let activeBots = [];
+      const appStateKey = 'appState'; // Key for storing state in localStorage
+    
+    const StateManager = {
+      // Function to get the current state from localStorage
+      getState() {
+        const stateJson = localStorage.getItem(appStateKey);
+        return stateJson ? JSON.parse(stateJson) : {};
+      },
+    
+      // Function to save the current state to localStorage
+      saveState(newState) {
+        const currentState = this.getState();
+        const updatedState = { ...currentState, ...newState };
+        localStorage.setItem(appStateKey, JSON.stringify(updatedState));
+      },
+    
+      // Optional: Function to clear the state
+      clearState() {
+        localStorage.removeItem(appStateKey);
+      }
+    }
+    </script>
+
+
+    <script>
+      let activeTradingBots = [];
     </script>
 
     <script>
@@ -200,32 +225,32 @@ input[type="number"]::-ms-expand {
 let bots = [
   {
     id:1,
-    name: "DOGE/USDT",
+    pair: "DOGE/USDT",
     type: "Futures Grid",
     dailyGains: 0.05, // Starting gain (slower growth rate)
     drawdown: 0.10, // Starting drawdown
     volatility: 0.15, // Starting volatility
-    imageSrc: "./bot/assets/doge.svg",
+    coinImage: "./bot/assets/doge.svg",
     graphSrc: "./bot/assets/doge-graph.png"
   },
   {
     id:2,
-    name: "XRP/USDT",
+    pair: "XRP/USDT",
     type: "Futures Grid",
     dailyGains: 100, // Starting gain (slower growth rate)
     drawdown: 0.12, // Starting drawdown
     volatility: 0.16, // Starting volatility
-    imageSrc: "./bot/assets/doge.svg",
+    coinImage: "./bot/assets/doge.svg",
     graphSrc: "./bot/assets/doge-graph.png"
   },
   {
     id:3,
-    name: "SOL/USDT",
+    pair: "SOL/USDT",
     type: "Futures Grid",
     dailyGains: 100, // Starting gain (slower growth rate)
     drawdown: 0.12, // Starting drawdown
     volatility: 0.16, // Starting volatility
-    imageSrc: "./bot/assets/doge.svg",
+    coinImage: "./bot/assets/doge.svg",
     graphSrc: "./bot/assets/doge-graph.png"
   },
   // Add more bot configurations here if needed
@@ -275,10 +300,10 @@ function initializeBots() {
         <div class="coinpair-card d-flex justify-content-start">
           <div class="currency-pair p-2 d-flex">
             <div class="coin-image">
-              <img src="${bot.imageSrc}" alt="Coin Image" class="rounded-circle">
+              <img src="${bot.coinImage}" alt="Coin Image" class="rounded-circle">
             </div>
             <div class="coin-symbol p-2">
-              <h4>${bot.name}</h4>
+              <h4>${bot.pair}</h4>
               <span>${bot.type}</span>
             </div>
           </div>
@@ -314,7 +339,7 @@ function initializeBots() {
                       </div>
                       <!-- Section to toggle -->
                       <div class="invest mt-3 d-none" id="invest_${bot.id}">
-                        <input type="number" class="form-control me-2" placeholder="Min: $10" min="10" step="0.01">
+                        <input type="number" class="form-control me-2" id="investmentAmount_${bot.id}" placeholder="Min: $10" min="10" step="0.01">
                         <button class="invest_button btn btn-primary" onclick="addBotToActive(${bot.id})">Invest</button>
                       </div>
           </div>
@@ -333,45 +358,53 @@ setInterval(updateBots, 5000);
 
 <script>
   function addBotToActive(invest_id) {
+    const bot_id = invest_id;
+    const investAmountInput = document.querySelector("#investmentAmount_" + invest_id);
+    
+    if (!investAmountInput) {
+        console.error("Investment input field not found.");
+        return;
+    }
+
+    // Retrieve the value from the input field
+    const investAmount = investAmountInput.value;
+
+    // Convert the input value to a number
+    const investAmountNumber = parseFloat(investAmount);
+
+    // Error checking
+    if (isNaN(investAmountNumber)) {
+        console.error("Invalid input: Please enter a valid number.");
+        return;
+    }
+
+    if (investAmountNumber < 10) {
+        console.error("Invalid input: Minimum investment amount is $10.");
+        return;
+    }
+
+    // Log the bot ID and investment amount if the input is valid
+    console.log(`Bot ID: ${bot_id}`);
+    console.log(`Invest amount: $${investAmountNumber}`);
+
+
   // Find the bot by ID
   let bot = bots.find(bot => bot.id === invest_id);
 
-  // Check if the bot is already in activeBots
-  let exists = activeBots.some(activeBot => activeBot.id === invest_id);
 
-  // If the bot doesn't exist in activeBots, add it
+  // Check if the bot is already in activeTradingBots
+  let exists = activeTradingBots.some(activeBot => activeBot.id === invest_id);
+
+  // If the bot doesn't exist in activeTradingBots, add it
   if (bot && !exists) {
-    activeBots.push(bot);
-    console.log(`Bot with ID ${invest_id} added to activeBots.`);
+    bot.status = "Active - 5D 2H 32m";
+    bot.dailyGains = 1;
+    bot.investment = investAmountNumber;
+    bot.pnl = 0;
+    activeTradingBots.push(bot);
+    console.log(`Bot with ID ${invest_id} added to activeTradingBots.`);
   } else {
     console.log(`Bot with ID ${invest_id} is already active or not found.`);
-  }
-}
-</script>
-
-
-
-
-<script>
-  const appStateKey = 'appState'; // Key for storing state in localStorage
-
-const StateManager = {
-  // Function to get the current state from localStorage
-  getState() {
-    const stateJson = localStorage.getItem(appStateKey);
-    return stateJson ? JSON.parse(stateJson) : {};
-  },
-
-  // Function to save the current state to localStorage
-  saveState(newState) {
-    const currentState = this.getState();
-    const updatedState = { ...currentState, ...newState };
-    localStorage.setItem(appStateKey, JSON.stringify(updatedState));
-  },
-
-  // Optional: Function to clear the state
-  clearState() {
-    localStorage.removeItem(appStateKey);
   }
 }
 </script>

@@ -26,6 +26,11 @@
       margin: 5px;
       cursor: pointer;
     }
+    #no-bots-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #888;
+  }
     </style>
     <title>Document</title>
 </head>
@@ -237,6 +242,16 @@
                         
 
                       </div>
+                  
+
+
+
+
+
+
+
+
+
                       <div class="mybots-list d-flex flex-wrap" id="dead-bots">
 
 
@@ -393,6 +408,31 @@
 
 
     <script>
+      const appStateKey = 'appState'; // Key for storing state in localStorage
+    
+    const StateManager = {
+      // Function to get the current state from localStorage
+      getState() {
+        const stateJson = localStorage.getItem(appStateKey);
+        return stateJson ? JSON.parse(stateJson) : {};
+      },
+    
+      // Function to save the current state to localStorage
+      saveState(newState) {
+        const currentState = this.getState();
+        const updatedState = { ...currentState, ...newState };
+        localStorage.setItem(appStateKey, JSON.stringify(updatedState));
+      },
+    
+      // Optional: Function to clear the state
+      clearState() {
+        localStorage.removeItem(appStateKey);
+      }
+    }
+    </script>
+
+
+    <script>
       // Get the buttons and the elements to show/hide
       const activeBotsBtn = document.getElementById('active-bots-btn');
       const deadBotsBtn = document.getElementById('dead-bots-btn');
@@ -407,12 +447,18 @@
         inactiveButton.classList.remove('active-btn');
       }
   
-      // Add event listeners to the buttons
-      activeBotsBtn.addEventListener('click', () => {
-        activeBots.classList.remove('hide');
-        deadBots.classList.add('hide');
-        updateButtonStyles(activeBotsBtn, deadBotsBtn);
-      });
+// Define a named function to handle the button click event
+function showActiveBots() {
+  activeBots.classList.remove('hide');
+  deadBots.classList.add('hide');
+  updateButtonStyles(activeBotsBtn, deadBotsBtn);
+}
+showActiveBots();
+
+
+// Add event listeners to the buttons
+activeBotsBtn.addEventListener('click', showActiveBots);
+
   
       deadBotsBtn.addEventListener('click', () => {
         activeBots.classList.add('hide');
@@ -420,7 +466,160 @@
         updateButtonStyles(deadBotsBtn, activeBotsBtn);
       });
     </script>
-    
+
+<script>
+// Initial data if not present in localStorage
+const initialBots = [
+    {
+      pair: "DOGE/USDT",
+      status: "Active - 5D 2H 32m",
+      dailyGains: 14,
+      investment: 120,
+      pnl: 1.24,
+      coinImage: "./active-bot/doge.svg"
+    },
+    {
+      pair: "BTC/USDT",
+      status: "Active - 3D 10H 45m",
+      dailyGains: 7,
+      investment: 200,
+      pnl: 2.50,
+      coinImage: "./active-bot/btc.svg"
+    }
+    // Add more bots as needed
+  ];
+
+  // Retrieve saved bots state from localStorage or use initial data
+  // const activeTradingBots = StateManager.getState().activeTradingBots || initialBots;
+  const activeTradingBots =  initialBots;
+
+
+  // Variable to control the growth rate of the bots
+  let growthRate = 1; // Default growth rate
+
+  // Function to generate bot card HTML
+  function generateBotCardHtml(bot, index) {
+    const totalValue = (bot.investment + bot.pnl).toFixed(2);
+    return `
+      <div class="col-12 col-md-4 pe-2" id="bot-${index}">
+        <div class="bot-card">
+          <div class="d-flex justify-content-end">
+            <div class="top-box p-2">
+              Active bot
+            </div>
+          </div>
+          <div class="coinpair-card d-flex justify-content-start">
+            <div class="currency-pair p-2 d-flex">
+              <div class="coin-image">
+                <img src="${bot.coinImage}" alt="Coin Image" class="rounded-circle">
+              </div>
+              <div class="coin-symbol p-2">
+                <h4>${bot.pair}</h4>
+                <span>${bot.status}</span>
+              </div>
+            </div>
+          </div>
+          <div class="bot-body">
+            <div class="row percentage-and-graph d-flex">
+              <div class="col-6 percentage d-flex align-items-center">
+                <div class="gains">
+                  <h6>Daily GAINS</h6>
+                  <span id="daily-gains-${index}">${bot.dailyGains}%</span>
+                </div>
+              </div>
+              <div class="col-6 total-value d-flex justify-content-end align-items-center">
+                <div>
+                  <h6>Total Value</h6>
+                  <span id="total-value-${index}">$${totalValue}</span>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <div class="col-4 align-items-center">
+                <div>
+                  <h6>Investment</h6>
+                  $ <span class="deeptext">${bot.investment}</span>
+                </div>
+              </div>
+              <div class="col-4 align-items-center">
+                <div>
+                  <h6>PnL (USDT)</h6>
+                  <span class="deeptext" id="pnl-${index}">${bot.pnl.toFixed(2)}</span>
+                </div>
+              </div>
+              <div class="col-4 d-flex justify-content-end">
+                <div>
+                  <h6>Terminate</h6>
+                  <div class="terminate-icon">
+                    <img src="./active-bot/terminate.png" alt="Terminate Icon" class="rounded-circle">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Populate the active bots list
+  const activeBotsContainer = document.getElementById("active-bots");
+
+  if (activeTradingBots.length === 0) {
+    // Show no bots message
+    activeBotsContainer.innerHTML = `
+      <div class="col-12 text-center">
+        <p>No active bots at the moment. Please check back later.</p>
+      </div>
+    `;
+  } else {
+    // Populate bots
+    activeTradingBots.forEach((bot, index) => {
+      activeBotsContainer.innerHTML += generateBotCardHtml(bot, index);
+    });
+  }
+
+  // Function to simulate live updates with controlled profit/loss behavior
+  function simulateLiveUpdates() {
+    activeTradingBots.forEach((bot, index) => {
+      // Determine whether the bot gains or loses value
+      const isGain = Math.random() < 0.8; // 80% chance of gain
+
+      // Calculate the change in PnL
+      const change = (Math.random() * 0.1 * growthRate).toFixed(2);
+      let newPnL = bot.pnl + (isGain ? parseFloat(change) : -parseFloat(change));
+
+      // Ensure the PnL doesn't go negative
+      if (newPnL < 0) newPnL = 0;
+
+      // Update the bot object
+      bot.pnl = newPnL;
+      bot.dailyGains = (newPnL / bot.investment * 100).toFixed(2);
+
+      // Update the HTML
+      document.getElementById(`daily-gains-${index}`).textContent = `${bot.dailyGains}%`;
+      document.getElementById(`pnl-${index}`).textContent = newPnL.toFixed(2);
+
+      // Calculate and update the Total Value
+      const newTotalValue = (bot.investment + newPnL).toFixed(2);
+      document.getElementById(`total-value-${index}`).textContent = `$${newTotalValue}`;
+    });
+
+    // Save updated bot state to localStorage
+    StateManager.saveState({ activeTradingBots });
+  }
+
+  // Simulate live updates every 5 seconds
+  setInterval(simulateLiveUpdates, 5000);
+
+  // Function to set the growth rate
+  function setGrowthRate(rate) {
+    growthRate = rate;
+  }
+
+  // Example usage: setGrowthRate(0.5); // Slower growth rate
+  // Example usage: setGrowthRate(2);   // Faster growth rate
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
