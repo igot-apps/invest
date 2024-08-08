@@ -220,7 +220,7 @@
                                       <div>
                                         <h6>Terminate</h6>
                                         <div class="terminate-icon">
-                                          <img src="./active-bot/terminate.png" alt="Coin Image" class="rounded-circle">
+                                          <img src="./active-bot/terminate.png" alt="Terminate Bot" class="rounded-circle" id="terminateBotIcon">
                                         </div>
                                       </div>
                                     </div>
@@ -496,6 +496,7 @@ const initialBots = [
   // Retrieve saved bots state from localStorage or use initial data
   // const activeTradingBots = StateManager.getState().activeTradingBots || initialBots;
   const activeTradingBots =  State.activeTradingBots || [];
+  const completedTradingBots =  State.completedTradingBots || [];
 
 
   // Variable to control the growth rate of the bots
@@ -555,7 +556,7 @@ const initialBots = [
                 <div>
                   <h6>Terminate</h6>
                   <div class="terminate-icon">
-                    <img src="./active-bot/terminate.png" alt="Terminate Icon" class="rounded-circle">
+                    <img src="./active-bot/terminate.png" alt="Terminate Bot" class="rounded-circle" id="terminateBotIcon" onclick="addBotToCompleted(${bot.id})">
                   </div>
                 </div>
               </div>
@@ -621,8 +622,43 @@ const initialBots = [
     growthRate = rate;
   }
 
+  
+
   // Example usage: setGrowthRate(0.5); // Slower growth rate
   // Example usage: setGrowthRate(2);   // Faster growth rate
+</script>
+<script>
+
+
+
+// Helper function to move a bot from active to completed
+function addBotToCompleted(bot_id) {
+  console.log("Attempt to terminate bot: " + bot_id);
+
+  // Check if the bot is already in completedTradingBots
+  const botExistsInCompleted = completedTradingBots.some(bot => bot.id === bot_id);
+
+  if (botExistsInCompleted) {
+    console.log("Bot is already in the completed list: " + bot_id);
+    return;
+  }
+
+  // Find the bot by its id in activeTradingBots
+  const botIndex = activeTradingBots.findIndex(bot => bot.id === bot_id);
+
+  if (botIndex !== -1) {
+    // Remove the bot from activeTradingBots and add it to completedTradingBots
+    const [terminatedBot] = activeTradingBots.splice(botIndex, 1);
+    completedTradingBots.push(terminatedBot);
+
+    // Update State with the new lists
+    StateManager.saveState({ activeTradingBots, completedTradingBots });
+
+    console.log("Bot terminated and moved to completed: ", terminatedBot);
+  } else {
+    console.log("Bot not found in active list: " + bot_id);
+  }
+}
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
