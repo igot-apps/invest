@@ -174,30 +174,35 @@ input[type="number"]::-ms-expand {
     <script>
       const appStateKey = 'appState'; // Key for storing state in localStorage
     
-    const StateManager = {
-      // Function to get the current state from localStorage
-      getState() {
-        const stateJson = localStorage.getItem(appStateKey);
-        return stateJson ? JSON.parse(stateJson) : {};
-      },
+      const StateManager = {
+        // Function to get the current state from localStorage
+        getState() {
+          const stateJson = localStorage.getItem(appStateKey);
+          return stateJson ? JSON.parse(stateJson) : {};
+        },
     
-      // Function to save the current state to localStorage
-      saveState(newState) {
-        const currentState = this.getState();
-        const updatedState = { ...currentState, ...newState };
-        localStorage.setItem(appStateKey, JSON.stringify(updatedState));
-      },
+        // Function to save the current state to localStorage
+        saveState(newState) {
+          const currentState = this.getState();
+          const updatedState = { ...currentState, ...newState };
+          localStorage.setItem(appStateKey, JSON.stringify(updatedState));
+        },
     
-      // Optional: Function to clear the state
-      clearState() {
-        localStorage.removeItem(appStateKey);
+        // Optional: Function to clear the state
+        clearState() {
+          localStorage.removeItem(appStateKey);
+        }
       }
-    }
+    
+      // Check if the saved state in localStorage is empty before assigning
+      const savedState = StateManager.getState();
+      const State = Object.keys(savedState).length === 0 ? {} : savedState;
     </script>
 
 
     <script>
-      let activeTradingBots = [];
+        // Check if State.activeTradingBots exists, if not, assign an empty array
+  let activeTradingBots = State.activeTradingBots || [];
     </script>
 
     <script>
@@ -403,10 +408,15 @@ setInterval(updateBots, 5000);
     bot.pnl = 0;
     activeTradingBots.push(bot);
     console.log(`Bot with ID ${invest_id} added to activeTradingBots.`);
+
+    //save state
+    State.activeTradingBots = activeTradingBots;
+    StateManager.saveState(State);
   } else {
     console.log(`Bot with ID ${invest_id} is already active or not found.`);
   }
 }
+
 </script>
 
 

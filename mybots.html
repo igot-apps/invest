@@ -410,25 +410,29 @@
     <script>
       const appStateKey = 'appState'; // Key for storing state in localStorage
     
-    const StateManager = {
-      // Function to get the current state from localStorage
-      getState() {
-        const stateJson = localStorage.getItem(appStateKey);
-        return stateJson ? JSON.parse(stateJson) : {};
-      },
+      const StateManager = {
+        // Function to get the current state from localStorage
+        getState() {
+          const stateJson = localStorage.getItem(appStateKey);
+          return stateJson ? JSON.parse(stateJson) : {};
+        },
     
-      // Function to save the current state to localStorage
-      saveState(newState) {
-        const currentState = this.getState();
-        const updatedState = { ...currentState, ...newState };
-        localStorage.setItem(appStateKey, JSON.stringify(updatedState));
-      },
+        // Function to save the current state to localStorage
+        saveState(newState) {
+          const currentState = this.getState();
+          const updatedState = { ...currentState, ...newState };
+          localStorage.setItem(appStateKey, JSON.stringify(updatedState));
+        },
     
-      // Optional: Function to clear the state
-      clearState() {
-        localStorage.removeItem(appStateKey);
+        // Optional: Function to clear the state
+        clearState() {
+          localStorage.removeItem(appStateKey);
+        }
       }
-    }
+    
+      // Check if the saved state in localStorage is empty before assigning
+      const savedState = StateManager.getState();
+      const State = Object.keys(savedState).length === 0 ? {} : savedState;
     </script>
 
 
@@ -491,7 +495,7 @@ const initialBots = [
 
   // Retrieve saved bots state from localStorage or use initial data
   // const activeTradingBots = StateManager.getState().activeTradingBots || initialBots;
-  const activeTradingBots =  initialBots;
+  const activeTradingBots =  State.activeTradingBots || [];
 
 
   // Variable to control the growth rate of the bots
