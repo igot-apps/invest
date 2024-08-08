@@ -8,12 +8,12 @@
     --button-hover-text-color: #28a745;
 
     border: 1px solid var(--border-color);
-    max-width:  400px;
+    // max-width:  400px;
     padding: 0;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: auto;
+    // margin-right: auto;
     padding: 20px;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 
@@ -79,4 +79,17 @@
         outline: none;
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     }
+
+
+}
+
+/* Media Query for Mobile Screens */
+@media only screen and (max-width: 768px) {
+.bot-card {
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
 }

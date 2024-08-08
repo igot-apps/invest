@@ -630,6 +630,30 @@ const initialBots = [
 <script>
 
 
+// Function to repopulate the active bots list
+function populateActiveBots() {
+  const activeBotsContainer = document.getElementById("active-bots");
+  activeBotsContainer.innerHTML = ""; // Clear the current content
+
+  if (activeTradingBots.length === 0) {
+    // Show no bots message
+    activeBotsContainer.innerHTML = `
+      <div class="col-12 text-center">
+        <p>No active bots at the moment. Please check back later.</p>
+      </div>
+    `;
+  } else {
+    // Populate bots
+    activeTradingBots.forEach((bot, index) => {
+      activeBotsContainer.innerHTML += generateBotCardHtml(bot, index);
+    });
+  }
+}
+
+// Call this function whenever you need to refresh the content
+populateActiveBots();
+
+
 
 // Helper function to move a bot from active to completed
 function addBotToCompleted(bot_id) {
@@ -653,8 +677,10 @@ function addBotToCompleted(bot_id) {
 
     // Update State with the new lists
     StateManager.saveState({ activeTradingBots, completedTradingBots });
+    populateActiveBots();
 
     console.log("Bot terminated and moved to completed: ", terminatedBot);
+    
   } else {
     console.log("Bot not found in active list: " + bot_id);
   }
