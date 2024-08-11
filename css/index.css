@@ -1,15 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
 header .hero-text-container {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   background-image: url("../assets/superman.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
-  padding: 20px;
+  padding: 40px 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 header .hero-text-container .overlay {
   position: absolute;
@@ -17,47 +20,49 @@ header .hero-text-container .overlay {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
+  border-radius: 8px;
 }
 header .hero-text-container > div {
   position: relative;
   z-index: 2;
+  text-align: center;
+  color: #fff;
 }
 header .hero-text-container #register-btn {
   position: relative;
   z-index: 2;
   background-color: #0eb3b3;
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 header .hero-text-container #register-btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  background-color: #0a8484;
+  transform: scale(1.08);
 }
 header .hero-text-container #register-btn:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
 header .hero-text-container #register-btn:active {
-  background-color: #004085;
-  transform: scale(0.98);
+  background-color: #075454;
+  transform: scale(0.96);
 }
 header .hero-text-container .sub-nav {
-  width: 170px;
   display: flex;
-  justify-content: space-between;
-  padding: 2px 10px;
-  background-color: rgba(143, 121, 121, 0.8);
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  padding: 5px 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 header .hero-text-container .sub-nav .div {
   display: flex;
@@ -66,68 +71,103 @@ header .hero-text-container .sub-nav .div {
 header .hero-text-container .sub-nav .div a {
   background: none;
   border: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #fff;
   cursor: pointer;
-  padding: 0;
+  padding: 0 10px; /* Horizontal padding for spacing */
   outline: none;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 header .hero-text-container .sub-nav .div a:hover {
-  color: #0eb3b3;
+  color: #38efef;
 }
 header .hero-text-container .sub-nav .div a:active {
   color: #003865;
 }
 header .hero-text-container .sub-nav .div.divider {
-  color: #6c757d;
+  color: #b0b0b0;
   margin: 0 10px;
 }
 
 /* Specific styles for screens with a max width of 768px (mobile screens) */
+@media (max-width: 768px) {
+  .hero-text-container {
+    flex-direction: column;
+    padding: 30px 15px;
+    border-radius: 5px;
+  }
+  #register-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 15px; /* Added margin between register button and sub-nav */
+  }
+  .sub-nav {
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    padding: 10px;
+  }
+  .sub-nav .div {
+    margin-bottom: 0; /* Remove margin for horizontal layout */
+    margin-right: 10px; /* Space between horizontal items */
+  }
+  .sub-nav .div.divider {
+    display: inline; /* Keep the divider visible */
+    margin: 0 5px; /* Adjust spacing for the divider */
+  }
+}
 section {
-  padding: 2rem;
+  padding: 2rem; /* Added padding for spaciousness */
+  background-color: #f4f4f4; /* Light background for the section */
 }
 section .heading {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem; /* Larger font size for emphasis */
+  margin-bottom: 2rem; /* Increased margin for spacing */
   text-align: center;
-  color: #2ecc71;
+  color: #333; /* Darker color for better contrast */
+  font-weight: 700; /* Bold text for importance */
+  text-transform: uppercase; /* All caps for a strong look */
+  letter-spacing: 1px; /* Slight letter spacing for readability */
 }
 section .d-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap for better spacing between items */
 }
 section .d-flex .listeditem {
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem; /* Increased padding for a more spacious feel */
+  background-color: #ffffff; /* Clean white background */
+  border: 1px solid #e0e0e0; /* Subtle border for separation */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions for hover effects */
+}
+section .d-flex .listeditem:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 section .d-flex .listeditem h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #007bff;
+  font-size: 1.75rem; /* Slightly larger font size for better visibility */
+  margin-bottom: 0.75rem; /* Increased margin for spacing */
+  color: #007bff; /* Primary color for headings */
+  font-weight: 600; /* Bold text for emphasis */
 }
 section .d-flex .listeditem h2 span {
-  font-weight: bold;
-  color: #000;
+  font-weight: 700; /* Extra bold for emphasis */
+  color: #333; /* Darker color for contrast */
 }
 section .d-flex .listeditem p {
-  font-size: 1rem;
-  color: #666;
+  font-size: 1.1rem; /* Slightly larger font size for readability */
+  color: #666; /* Softer color for text */
 }
 section .d-flex .col-12 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased margin for spacing */
 }
 @media (min-width: 768px) {
   section .d-flex .col-12.col-md-6 {
-    flex: 0 0 48%;
+    flex: 0 0 48%; /* Slightly adjusted for spacing */
   }
   section .d-flex .col-12.col-md-4 {
-    flex: 0 0 30%;
+    flex: 0 0 30%; /* Adjusted for spacing and alignment */
   }
 }
 section .d-flex .d-none {
@@ -135,84 +175,42 @@ section .d-flex .d-none {
 }
 @media (min-width: 768px) {
   section .d-flex .d-none.d-md-block {
-    display: block;
-  }
-}
-
-section {
-  padding: 2rem;
-}
-section .heading {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: #2ecc71;
-}
-section .d-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-section .d-flex .listeditem {
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-section .d-flex .listeditem h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #007bff;
-}
-section .d-flex .listeditem h2 span {
-  font-weight: bold;
-  color: #000;
-}
-section .d-flex .listeditem p {
-  font-size: 1rem;
-  color: #666;
-}
-section .d-flex .col-12 {
-  margin-bottom: 1rem;
-}
-@media (min-width: 768px) {
-  section .d-flex .col-12.col-md-6 {
-    flex: 0 0 48%;
-  }
-  section .d-flex .col-12.col-md-4 {
-    flex: 0 0 30%;
-  }
-}
-section .d-flex .d-none {
-  display: none;
-}
-@media (min-width: 768px) {
-  section .d-flex .d-none.d-md-block {
-    display: block;
+    display: block; /* Show block on larger screens */
   }
 }
 
 .bots .heading {
-  font-size: 2em;
+  font-size: 2.5em; /* Slightly larger for emphasis */
   font-weight: bold;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Increased margin for better spacing */
+  color: #333; /* Darker color for contrast */
+  text-transform: uppercase; /* All caps for a strong heading */
+  letter-spacing: 1px; /* Slight letter spacing for readability */
 }
 .bots p {
-  font-size: 1.2em;
+  font-size: 1.1em; /* Adjusted for readability */
   text-align: center;
-  margin-bottom: 20px;
-  line-height: 1.5;
-  max-width: 800px;
+  margin-bottom: 25px; /* Increased margin for spacing */
+  line-height: 1.6; /* Increased line height for better readability */
+  max-width: 700px; /* Slightly reduced for better focus on content */
   margin-left: auto;
   margin-right: auto;
+  color: #555; /* Softer color for paragraph text */
 }
 .bots .listeditem {
-  padding: 15px;
+  padding: 20px; /* Increased padding for a more spacious look */
   text-align: center;
-  border: 1px solid #ddd;
-  margin: 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Lighter border for a modern look */
+  margin: 15px 0; /* Increased margin for better separation */
+  border-radius: 8px; /* Rounded corners for a smoother appearance */
+  background-color: #f9f9f9; /* Subtle background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for hover effects */
+}
+.bots .listeditem:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
 }
 
 * {
@@ -222,141 +220,187 @@ section .d-flex .d-none {
 }
 
 .mybots {
-  background: #F8F9FA;
-  padding-bottom: 10px;
+  background: #F4F4F4; /* Light gray background for a softer look */
+  padding: 2rem; /* Increased padding for better spacing */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 .mybots .rec {
   width: 100%;
-  border: 2px solid #B5B8BC;
-  background: #0EB3B3;
-  border-bottom: #F8F9FA;
-  padding-left: 10px;
+  border: 2px solid #B5B8BC; /* Subtle border for distinction */
+  background: #00B2B2; /* Updated background color for freshness */
+  border-bottom: 2px solid #F4F4F4; /* Match container background for a smooth look */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners for the box */
+  margin-bottom: 1rem; /* Space below the box */
 }
-.mybots .box1:hover {
-  background-color: #0a8d8d; /* Darker shade on hover */
+.mybots .box1, .mybots .box2 {
+  width: 120px; /* Consistent width for buttons */
+  padding: 12px 24px; /* Slightly increased padding for better touch target */
+  font-weight: 600; /* Semi-bold text for emphasis */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  text-align: center; /* Center text alignment */
+  display: inline-block; /* Inline-block to allow margin adjustments */
 }
 .mybots .box1 {
-  width: 110px; /* Adjusted width for better appearance */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding for button size */
-  font-weight: bold; /* Bold text */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition on hover */
+  background-color: #00B2B2; /* Button color */
+  color: #FFFFFF; /* White text color */
+}
+.mybots .box1:hover {
+  background-color: #009999; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 .mybots .box2 {
-  width: 120px; /* Adjusted width for better appearance */
-  background-color: #0EB3B3; /* Background color */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Padding for button size */
-  font-weight: bold; /* Bold text */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition on hover */
+  background-color: #00B2B2; /* Button color */
+  color: #FFFFFF; /* White text color */
 }
 .mybots .box2:hover {
-  background-color: #0a8d8d; /* Slightly darker shade on hover */
+  background-color: #009999; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
 }
 .mybots .mybots-list {
-  margin-top: 20px;
+  margin-top: 1.5rem; /* Adjusted margin for spacing */
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 80%; /* Adjusted width for better centering */
+  max-width: 1200px; /* Maximum width for larger screens */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Increased gap between items */
 }
 
 .deposit {
-  margin-top: 20px;
-  background: #F8F9FA;
+  margin-top: 30px; /* Increased margin for better spacing */
+  background-color: #f3f4f6; /* Softer background color for the section */
 }
 .deposit .inputs {
-  max-width: 300px;
-  margin: 20px auto;
-  padding: 15px;
-  background-color: #f9f9f9;
+  max-width: 350px; /* Increased max-width for a better layout */
+  margin: 25px auto; /* Adjusted margins for better spacing */
+  padding: 20px; /* Increased padding for more spacious input areas */
+  background-color: #ffffff; /* Clean white background */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 .deposit .inputs h6 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 18px; /* Larger font size for headings */
+  margin-bottom: 15px; /* Increased margin for spacing */
+  color: #333; /* Darker color for better contrast */
+  font-weight: 600; /* Bold text for emphasis */
 }
 .deposit .form-select {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  background-color: #fff;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 12px; /* Increased padding for better usability */
+  border: 1px solid #ccc; /* Light border color */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Slightly larger font size for readability */
+  background-color: #ffffff; /* Clean white background */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft inner shadow */
+  transition: border-color 0.2s ease; /* Smooth border color transition */
+}
+.deposit .form-select:focus {
+  border-color: #007bff; /* Highlight border color on focus */
+  outline: none; /* Remove default outline */
 }
 .deposit .form-select option {
   padding: 10px;
 }
 .deposit .deposit-detail {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 450px; /* Increased max-width for a more spacious layout */
+  margin: 25px auto; /* Adjusted margins for better spacing */
+  padding: 25px; /* Increased padding for a more spacious look */
+  border: 1px solid #ddd; /* Light border for separation */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #ffffff; /* Clean white background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 .deposit .deposit-detail h6 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  color: #333;
-  text-align: center;
-  font-weight: bold;
+  font-size: 20px; /* Larger font size for headings */
+  margin-bottom: 20px; /* Increased margin for spacing */
+  color: #333; /* Darker color for contrast */
+  text-align: center; /* Centered text */
+  font-weight: 700; /* Bold text for emphasis */
 }
 .deposit .deposit-detail div {
   text-align: center;
-  color: #666;
-  font-size: 14px;
+  color: #666; /* Softer color for text */
+  font-size: 16px; /* Slightly larger font size for readability */
 }
 .deposit .deposit-detail img {
   display: block;
-  margin: 10px auto;
-  max-width: 100%;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  margin: 15px auto; /* Increased margin for better spacing */
+  max-width: 100%; /* Ensures the image scales appropriately */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border for a polished look */
 }
 .deposit .deposit-detail .btc-address {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  word-break: break-all; /* To handle long addresses */
+  margin-top: 15px; /* Increased margin for spacing */
+  padding: 15px; /* Increased padding for better usability */
+  background-color: #f8f9fa; /* Softer background color */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light border for separation */
+  word-break: break-word; /* Handle long addresses */
+  overflow-wrap: break-word; /* Ensure long text wraps correctly */
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif; /* Ensure the font is applied globally */
+}
+
+body {
+  background-color: #f4f4f9; /* Light background color for a clean look */
+  color: #333; /* Dark text for readability */
+  line-height: 1.6; /* Comfortable line-height for body text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+.text-center {
+  text-align: center;
+  padding: 20px; /* Add padding for spacing around the text */
 }
 
 .text-center .heading {
-  font-size: 2rem;
+  font-size: 2.5rem; /* Slightly larger heading */
   font-weight: bold;
-  color: #0eb3b3;
-  margin-bottom: 10px;
+  color: #333; /* Use a darker color for the heading */
+  margin-bottom: 15px; /* Increase space below the heading */
 }
+
 .text-center p {
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Increase font size for better readability */
   color: #666;
-  line-height: 1.5;
-  max-width: 600px;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  line-height: 1.7; /* Slightly more line-height */
+  max-width: 700px; /* Increase max-width */
+  margin: 0 auto 25px; /* Center and add space below */
+  padding: 0 15px; /* Add horizontal padding */
 }
 
 .main {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1100px; /* Slightly reduce max-width for better focus on content */
+  width: 100%;
+  margin: 20px auto; /* Add vertical margin for breathing space */
+  padding: 0 15px; /* Add padding for mobile responsiveness */
 }
 
 .main .container-fluid {
-  flex: auto;
-  align-items: end;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for better layout on small screens */
+  align-items: center;
+  justify-content: space-between; /* Spread content evenly */
+  padding: 10px; /* Add padding for spacing */
+}
+
+.container-fluid > * {
+  flex: 1; /* Ensure child elements take equal space */
+  margin: 10px; /* Add margin between child elements */
+  min-width: 300px; /* Ensure a minimum width for child elements */
 }/*# sourceMappingURL=index.css.map */

@@ -135,7 +135,7 @@ input[type="number"]::-ms-expand {
             </div>
           </div>
 
-          <div class="d-flex flex-wrap justify-content-center" id="bot-container"></div>
+          <div class="d-flex flex-wrap justify-content-center m-2" id="bot-container"></div>
 
         </div>
         
@@ -296,9 +296,9 @@ function initializeBots() {
   const botContainer = document.querySelector(".d-flex.flex-wrap.justify-content-center");
   bots.forEach((bot) => {
     botContainer.innerHTML += `
-      <div class="col-12 col-md-4 bot-card pt-0 pe-0">
+      <div class="col-12 col-md-4 bot-card pt-0 pe-0 me-2">
         <div class="d-flex justify-content-end">
-          <div class="top-box p-2">
+          <div class="top-box p-2" style="width: 100px;">
             Top Trader
           </div>
         </div>

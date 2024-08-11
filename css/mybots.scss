@@ -4,68 +4,64 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-
-.mybots {
-     background: #F8F9FA;
-     padding-bottom: 10px;
-    
-    
-
-    .rec {
-        width: 100%;
-        border: 2px solid #B5B8BC;
-        background: #0EB3B3; 
-        border-bottom: #F8F9FA;
-        padding-left: 10px;
-        
-
-        
-    }
-
-    .box1:hover {
-        background-color: #0a8d8d; /* Darker shade on hover */
-      }
-      
-      .box1 {
-        width: 110px; /* Adjusted width for better appearance */
-        // background-color: #f1f1f1; /* Background color */
-        color: white; /* Text color */
-        padding: 10px 20px; /* Padding for button size */
-        font-weight: bold; /* Bold text */
-        border: none; /* Remove border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s; /* Smooth transition on hover */
-      }
-
-    .box2 {
-        width: 120px; /* Adjusted width for better appearance */
-        background-color: #0EB3B3; /* Background color */
-        color: white; /* Text color */
-        padding: 10px 20px; /* Padding for button size */
-        font-weight: bold; /* Bold text */
-        border: none; /* Remove border */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s; /* Smooth transition on hover */
-      }
-      
-      
-      
-      .box2:hover {
-        background-color: #0a8d8d; /* Slightly darker shade on hover */
-      }
-      
-
-    .mybots-list {
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 90%;
-        
-        
-
-    }
 }
 
+.mybots {
+    background: #F4F4F4; /* Light gray background for a softer look */
+    padding: 2rem; /* Increased padding for better spacing */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    
+    .rec {
+        width: 100%;
+        border: 2px solid #B5B8BC; /* Subtle border for distinction */
+        background: #00B2B2; /* Updated background color for freshness */
+        border-bottom: 2px solid #F4F4F4; /* Match container background for a smooth look */
+        padding: 10px;
+        border-radius: 5px; /* Rounded corners for the box */
+        margin-bottom: 1rem; /* Space below the box */
+    }
+
+    .box1, .box2 {
+        width: 120px; /* Consistent width for buttons */
+        padding: 12px 24px; /* Slightly increased padding for better touch target */
+        font-weight: 600; /* Semi-bold text for emphasis */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Rounded corners for buttons */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+        text-align: center; /* Center text alignment */
+        display: inline-block; /* Inline-block to allow margin adjustments */
+    }
+
+    .box1 {
+        background-color: #00B2B2; /* Button color */
+        color: #FFFFFF; /* White text color */
+
+        &:hover {
+            background-color: #009999; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
+        }
+    }
+
+    .box2 {
+        background-color: #00B2B2; /* Button color */
+        color: #FFFFFF; /* White text color */
+
+        &:hover {
+            background-color: #009999; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
+        }
+    }
+
+    .mybots-list {
+        margin-top: 1.5rem; /* Adjusted margin for spacing */
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%; /* Adjusted width for better centering */
+        max-width: 1200px; /* Maximum width for larger screens */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem; /* Increased gap between items */
+    }
+}

@@ -1,32 +1,38 @@
 .bots {
-
-
-
-    .heading {
-      font-size: 2em;
+  .heading {
+      font-size: 2.5em; /* Slightly larger for emphasis */
       font-weight: bold;
- 
       text-align: center;
-      margin-bottom: 10px;
-    }
+      margin-bottom: 20px; /* Increased margin for better spacing */
+      color: #333; /* Darker color for contrast */
+      text-transform: uppercase; /* All caps for a strong heading */
+      letter-spacing: 1px; /* Slight letter spacing for readability */
+  }
 
-    p {
-
-      font-size: 1.2em;
+  p {
+      font-size: 1.1em; /* Adjusted for readability */
       text-align: center;
-      margin-bottom: 20px;
-      line-height: 1.5;
-      max-width: 800px;
+      margin-bottom: 25px; /* Increased margin for spacing */
+      line-height: 1.6; /* Increased line height for better readability */
+      max-width: 700px; /* Slightly reduced for better focus on content */
       margin-left: auto;
       margin-right: auto;
-    }
+      color: #555; /* Softer color for paragraph text */
+  }
 
-    .listeditem {
-
-      padding: 15px;
+  .listeditem {
+      padding: 20px; /* Increased padding for a more spacious look */
       text-align: center;
-      border: 1px solid #ddd;
-      margin: 10px 0;
-    }
+      border: 1px solid rgba(0, 0, 0, 0.1); /* Lighter border for a modern look */
+      margin: 15px 0; /* Increased margin for better separation */
+      border-radius: 8px; /* Rounded corners for a smoother appearance */
+      background-color: #f9f9f9; /* Subtle background color */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for hover effects */
 
+      &:hover {
+          transform: translateY(-5px); /* Slight lift on hover */
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+      }
+  }
 }
