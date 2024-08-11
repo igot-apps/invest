@@ -1,0 +1,84 @@
+// Transactions Section Styles
+.transactions {
+    .heading {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
+    }
+  
+    .tabs {
+      .nav-tabs {
+        border-bottom: 2px solid #dee2e6;
+  
+        .nav-link {
+          border-radius: 0;
+          margin-bottom: -1px;
+          padding: 10px 15px;
+          color: #495057;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+  
+          &.active {
+            color: #007bff;
+            background-color: #f8f9fa;
+            border-color: #007bff;
+          }
+  
+          &:hover {
+            background-color: #e9ecef;
+          }
+        }
+      }
+  
+      .tab-content {
+        .table {
+          border: 1px solid #dee2e6;
+          border-radius: 5px;
+          overflow: hidden;
+  
+          thead {
+            background-color: #007bff;
+            color: #fff;
+  
+            th {
+              padding: 10px;
+              text-align: left;
+            }
+          }
+  
+          tbody {
+            tr {
+              &:nth-child(odd) {
+                background-color: #f8f9fa;
+              }
+  
+              &:nth-child(even) {
+                background-color: #ffffff;
+              }
+  
+              td {
+                padding: 10px;
+              }
+            }
+          }
+        }
+  
+        .badge {
+          font-size: 0.85rem;
+          font-weight: normal;
+        }
+  
+        .badge.bg-success {
+          background-color: #28a745;
+        }
+  
+        .badge.bg-info {
+          background-color: #17a2b8;
+        }
+      }
+    }
+  }
+  

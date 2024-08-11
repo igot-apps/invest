@@ -1,0 +1,110 @@
+/* Withdrawal Section Styles */
+.withdrawal {
+    .heading {
+        background-color: #f1f5f9; /* Light background for a clean look */
+        border-bottom: 1px solid #e2e6ea; /* Subtle border for separation */
+        padding: 20px; /* Increased padding for better spacing */
+        border-radius: 8px; /* Rounded corners for a softer appearance */
+
+        h5 {
+            margin: 0;
+            font-size: 1.5rem; /* Slightly larger font size */
+            color: #007bff; /* Blue color for emphasis */
+            font-weight: 600; /* Bold text for prominence */
+        }
+    }
+
+    .body {
+        .d-flex {
+            flex-wrap: wrap;
+            gap: 20px; /* Added gap for better spacing between columns */
+
+            .col-md-6 {
+                .select-coin, .withdrawal-detail {
+                    margin-bottom: 30px; /* Increased margin for separation */
+                    
+                    .inputs {
+                        h6 {
+                            font-size: 1.2rem; /* Larger font size for better readability */
+                            margin-bottom: 15px;
+                            color: #343a40; /* Dark color for contrast */
+                            font-weight: 500; /* Medium font weight for better emphasis */
+                        }
+
+                        select.form-select {
+                            font-size: 1rem;
+                            padding: 12px; /* Added padding for a more comfortable input */
+                            border-radius: 6px; /* Slightly larger border radius for a modern look */
+                            border: 1px solid #ced4da;
+                            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+                        }
+                    }
+
+                    .withdrawal-detail {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px; /* Gap between form groups for better spacing */
+                        
+                        .form-group {
+                            margin-bottom: 20px;
+
+                            label {
+                                font-weight: 600; /* Bold font for labels */
+                                margin-bottom: 5px;
+                                display: block;
+                                color: #495057; /* Darker color for better readability */
+                            }
+
+                            input.form-control {
+                                border: 1px solid #ced4da;
+                                border-radius: 6px; /* Larger border radius */
+                                padding: 12px; /* Added padding for a more comfortable input */
+                                font-size: 1rem;
+                            }
+                        }
+
+                        .network-fee {
+                            margin-top: 10px;
+                            font-weight: 600; /* Bold text for emphasis */
+                            color: #ff5722; /* Highlight color for network fee */
+                        }
+
+                        button.btn-primary {
+                            background-color: #007bff; /* Primary button color */
+                            color: #fff;
+                            border: none;
+                            padding: 12px 24px; /* Increased padding for a better button size */
+                            border-radius: 6px; /* Larger border radius for a modern button */
+                            font-size: 1rem;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+
+                            &:hover {
+                                background-color: #0056b3; /* Darker shade on hover */
+                            }
+                        }
+                    }
+                }
+
+                .heading {
+                    background-color: #f1f5f9; /* Light background for consistency */
+                    border-bottom: 1px solid #e2e6ea; /* Subtle border for separation */
+                    padding: 20px; /* Consistent padding */
+                    border-radius: 8px; /* Rounded corners for consistency */
+                    
+                    h5 {
+                        margin: 0;
+                        font-size: 1.5rem; /* Consistent font size */
+                        color: #36423d; /* Green color for emphasis */
+                        font-weight: 600; /* Bold text */
+                    }
+                }
+
+                p {
+                    font-size: 1rem;
+                    color: #495057; /* Dark color for text */
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassmorphism Login Form | CodingNepal</title>
+  <link rel="stylesheet" href="./login/style.css">
+  <style>
+    /* Style for the title icon */
+    .title-icon {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 10px; /* Adjust padding as needed */
+      font-size: 24px; /* Adjust the size as needed */
+      color: #333; /* Adjust color as needed */
+      text-decoration: none;
+      z-index: 1000; /* Ensure it stays on top of other elements */
+      background-color: #fff; /* Optional: add background color */
+      border-radius: 50%; /* Optional: make it circular */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional: add shadow for better visibility */
+    }
+
+    .title-icon:hover {
+      color: #555; /* Change color on hover if desired */
+    }
+
+    .form-container {
+      display: none;
+    }
+    .form-container.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <a href="./index.html" class="title-icon" title="Go to Home">🏠</a>
+
+  <div class="wrapper">
+    <div class="form-container login-form active">
+      <form action="#">
+        <h2>Login</h2>
+        <div class="input-field">
+          <input type="text" required>
+          <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+          <input type="xpassword" required>
+          <label>Enter your password</label>
+        </div>
+        <div class="forget">
+          <label for="remember">
+            <input type="checkbox" id="remember">
+            <p>Remember me</p>
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit">Log In</button>
+        <div class="register">
+          <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+        </div>
+      </form>
+    </div>
+    <div class="form-container register-form">
+      <form action="#">
+        <h2>Register</h2>
+        <div class="input-field">
+          <input type="text" required>
+          <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+          <input type="xpassword" required>
+          <label>Enter your password</label>
+        </div>
+        <div class="input-field">
+          <input type="xpassword" required>
+          <label>Confirm your password</label>
+        </div>
+        <button type="submit">Register</button>
+        <div class="login">
+          <p>Already have an account? <a href="#" id="show-login">Log In</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const showLoginLink = document.getElementById('show-login');
+    const showRegisterLink = document.getElementById('show-register');
+    const loginForm = document.querySelector('.login-form');
+    const registerForm = document.querySelector('.register-form');
+
+    showLoginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+    });
+
+    showRegisterLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.remove('active');
+      registerForm.classList.add('active');
+    });
+  </script>
+</body>
+</html>

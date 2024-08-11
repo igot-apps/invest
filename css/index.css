@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 header .hero-text-container {
   margin: 50px 0;
   display: flex;
@@ -13,6 +19,7 @@ header .hero-text-container {
   padding: 40px 20px;
   border-radius: 8px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: vw;
 }
 header .hero-text-container .overlay {
   position: absolute;
@@ -43,6 +50,7 @@ header .hero-text-container #register-btn {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 header .hero-text-container #register-btn:hover {
   background-color: #0a8484;
@@ -345,6 +353,154 @@ section .d-flex .d-none {
   overflow-wrap: break-word; /* Ensure long text wraps correctly */
 }
 
+/* Withdrawal Section Styles */
+.withdrawal .heading {
+  background-color: #f1f5f9; /* Light background for a clean look */
+  border-bottom: 1px solid #e2e6ea; /* Subtle border for separation */
+  padding: 20px; /* Increased padding for better spacing */
+  border-radius: 8px; /* Rounded corners for a softer appearance */
+}
+.withdrawal .heading h5 {
+  margin: 0;
+  font-size: 1.5rem; /* Slightly larger font size */
+  color: #007bff; /* Blue color for emphasis */
+  font-weight: 600; /* Bold text for prominence */
+}
+.withdrawal .body .d-flex {
+  flex-wrap: wrap;
+  gap: 20px; /* Added gap for better spacing between columns */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail {
+  margin-bottom: 30px; /* Increased margin for separation */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .inputs h6, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .inputs h6 {
+  font-size: 1.2rem; /* Larger font size for better readability */
+  margin-bottom: 15px;
+  color: #343a40; /* Dark color for contrast */
+  font-weight: 500; /* Medium font weight for better emphasis */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .inputs select.form-select, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .inputs select.form-select {
+  font-size: 1rem;
+  padding: 12px; /* Added padding for a more comfortable input */
+  border-radius: 6px; /* Slightly larger border radius for a modern look */
+  border: 1px solid #ced4da;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Gap between form groups for better spacing */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail .form-group, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail .form-group {
+  margin-bottom: 20px;
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail .form-group label, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail .form-group label {
+  font-weight: 600; /* Bold font for labels */
+  margin-bottom: 5px;
+  display: block;
+  color: #495057; /* Darker color for better readability */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail .form-group input.form-control, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail .form-group input.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 6px; /* Larger border radius */
+  padding: 12px; /* Added padding for a more comfortable input */
+  font-size: 1rem;
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail .network-fee, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail .network-fee {
+  margin-top: 10px;
+  font-weight: 600; /* Bold text for emphasis */
+  color: #ff5722; /* Highlight color for network fee */
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail button.btn-primary, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail button.btn-primary {
+  background-color: #007bff; /* Primary button color */
+  color: #fff;
+  border: none;
+  padding: 12px 24px; /* Increased padding for a better button size */
+  border-radius: 6px; /* Larger border radius for a modern button */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.withdrawal .body .d-flex .col-md-6 .select-coin .withdrawal-detail button.btn-primary:hover, .withdrawal .body .d-flex .col-md-6 .withdrawal-detail .withdrawal-detail button.btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+.withdrawal .body .d-flex .col-md-6 .heading {
+  background-color: #f1f5f9; /* Light background for consistency */
+  border-bottom: 1px solid #e2e6ea; /* Subtle border for separation */
+  padding: 20px; /* Consistent padding */
+  border-radius: 8px; /* Rounded corners for consistency */
+}
+.withdrawal .body .d-flex .col-md-6 .heading h5 {
+  margin: 0;
+  font-size: 1.5rem; /* Consistent font size */
+  color: #36423d; /* Green color for emphasis */
+  font-weight: 600; /* Bold text */
+}
+.withdrawal .body .d-flex .col-md-6 p {
+  font-size: 1rem;
+  color: #495057; /* Dark color for text */
+}
+
+.transactions .heading {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+.transactions .tabs .nav-tabs {
+  border-bottom: 2px solid #dee2e6;
+}
+.transactions .tabs .nav-tabs .nav-link {
+  border-radius: 0;
+  margin-bottom: -1px;
+  padding: 10px 15px;
+  color: #495057;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.transactions .tabs .nav-tabs .nav-link.active {
+  color: #007bff;
+  background-color: #f8f9fa;
+  border-color: #007bff;
+}
+.transactions .tabs .nav-tabs .nav-link:hover {
+  background-color: #e9ecef;
+}
+.transactions .tabs .tab-content .table {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.transactions .tabs .tab-content .table thead {
+  background-color: #007bff;
+  color: #fff;
+}
+.transactions .tabs .tab-content .table thead th {
+  padding: 10px;
+  text-align: left;
+}
+.transactions .tabs .tab-content .table tbody tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+.transactions .tabs .tab-content .table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+.transactions .tabs .tab-content .table tbody tr td {
+  padding: 10px;
+}
+.transactions .tabs .tab-content .badge {
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+.transactions .tabs .tab-content .badge.bg-success {
+  background-color: #28a745;
+}
+.transactions .tabs .tab-content .badge.bg-info {
+  background-color: #17a2b8;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -388,7 +544,6 @@ body {
   max-width: 1100px; /* Slightly reduce max-width for better focus on content */
   width: 100%;
   margin: 20px auto; /* Add vertical margin for breathing space */
-  padding: 0 15px; /* Add padding for mobile responsiveness */
 }
 
 .main .container-fluid {
