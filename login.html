@@ -14,18 +14,18 @@
       position: fixed;
       top: 10px;
       left: 10px;
-      padding: 10px; /* Adjust padding as needed */
-      font-size: 24px; /* Adjust the size as needed */
-      color: #333; /* Adjust color as needed */
+      padding: 10px;
+      font-size: 24px;
+      color: #333;
       text-decoration: none;
-      z-index: 1000; /* Ensure it stays on top of other elements */
-      background-color: #fff; /* Optional: add background color */
-      border-radius: 50%; /* Optional: make it circular */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optional: add shadow for better visibility */
+      z-index: 1000;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .title-icon:hover {
-      color: #555; /* Change color on hover if desired */
+      color: #555;
     }
 
     .form-container {
@@ -48,7 +48,7 @@
           <label>Enter your email</label>
         </div>
         <div class="input-field">
-          <input type="xpassword" required>
+          <input type="text" id="login-password-field" required>
           <label>Enter your password</label>
         </div>
         <div class="forget">
@@ -69,14 +69,18 @@
         <h2>Register</h2>
         <div class="input-field">
           <input type="text" required>
+          <label>Enter your username</label>
+        </div>
+        <div class="input-field">
+          <input type="text" required>
           <label>Enter your email</label>
         </div>
         <div class="input-field">
-          <input type="xpassword" required>
+          <input type="text" id="register-password-field" required>
           <label>Enter your password</label>
         </div>
         <div class="input-field">
-          <input type="xpassword" required>
+          <input type="text" id="confirm-password-field" required>
           <label>Confirm your password</label>
         </div>
         <button type="submit">Register</button>
@@ -88,6 +92,7 @@
   </div>
 
   <script>
+    // Toggle between login and register forms
     const showLoginLink = document.getElementById('show-login');
     const showRegisterLink = document.getElementById('show-register');
     const loginForm = document.querySelector('.login-form');
@@ -104,6 +109,22 @@
       loginForm.classList.remove('active');
       registerForm.classList.add('active');
     });
+
+    // Handle password fields to prevent autofill
+    function handlePasswordField(field) {
+      field.type = "text"; // Temporarily set to text to prevent autofill
+      setTimeout(() => {
+        field.type = "password"; // Switch back to password type after a short delay
+      }, 10);
+    }
+
+    const loginPasswordField = document.getElementById('login-password-field');
+    const registerPasswordField = document.getElementById('register-password-field');
+    const confirmPasswordField = document.getElementById('confirm-password-field');
+
+    loginPasswordField.addEventListener('focus', () => handlePasswordField(loginPasswordField));
+    registerPasswordField.addEventListener('focus', () => handlePasswordField(registerPasswordField));
+    confirmPasswordField.addEventListener('focus', () => handlePasswordField(confirmPasswordField));
   </script>
 
 </body>
