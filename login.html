@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glassmorphism Login Form | CodingNepal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
   <link rel="stylesheet" href="./login/style.css">
+
   <style>
     /* Style for the title icon */
     .title-icon {
@@ -101,6 +104,14 @@
       loginForm.classList.remove('active');
       registerForm.classList.add('active');
     });
+  </script>
+  <script>
+     iziToast.info({
+	  title: 'Success',
+	  message: 'already in the cart!',
+	  position: 'topCenter',
+	  timeout: 3000
+	});
   </script>
 </body>
 </html>
