@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,6 +92,9 @@
   </div>
 
   <script>
+    const serverName = 'http://localhost';
+    const portNumber = 3000;
+
     // Toggle between login and register forms
     const showLoginLink = document.getElementById('show-login');
     const showRegisterLink = document.getElementById('show-register');
@@ -125,6 +128,63 @@
     loginPasswordField.addEventListener('focus', () => handlePasswordField(loginPasswordField));
     registerPasswordField.addEventListener('focus', () => handlePasswordField(registerPasswordField));
     confirmPasswordField.addEventListener('focus', () => handlePasswordField(confirmPasswordField));
+
+    // Handle registration form submission
+    document.querySelector('.register-form form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const username = e.target.querySelector('input[type="text"]').value;
+      const email = e.target.querySelectorAll('input[type="text"]')[1].value;
+      const password = registerPasswordField.value;
+      const confirmPassword = confirmPasswordField.value;
+
+      try {
+        const response = await fetch(`${serverName}:${portNumber}/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, email, password, confirmPassword, state: 'active' })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          iziToast.success({ title: 'Success', message: result.message });
+        } else {
+          iziToast.error({ title: 'Error', message: result.message });
+        }
+      } catch (error) {
+        iziToast.error({ title: 'Error', message: 'Something went wrong!' });
+      }
+    });
+
+    // Handle login form submission
+    document.querySelector('.login-form form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = e.target.querySelector('input[type="text"]').value;
+      const password = loginPasswordField.value;
+
+      try {
+        const response = await fetch(`${serverName}:${portNumber}/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          console.log(result);
+          iziToast.success({ title: 'Success', message: result.message });
+        } else {
+          iziToast.error({ title: 'Error', message: result.message });
+        }
+      } catch (error) {
+        iziToast.error({ title: 'Error', message: 'Something went wrong!' });
+      }
+    });
   </script>
 
 </body>
