@@ -92,8 +92,34 @@
   </div>
 
   <script>
+          const appStateKey = 'appState'; // Key for storing state in localStorage
+    
+    const StateManager = {
+      // Function to get the current state from localStorage
+      getState() {
+        const stateJson = localStorage.getItem(appStateKey);
+        return stateJson ? JSON.parse(stateJson) : {};
+      },
+  
+      // Function to save the current state to localStorage
+      saveState(newState) {
+        const currentState = this.getState();
+        const updatedState = { ...currentState, ...newState };
+        localStorage.setItem(appStateKey, JSON.stringify(updatedState));
+      },
+  
+      // Optional: Function to clear the state
+      clearState() {
+        localStorage.removeItem(appStateKey);
+      }
+    }
+  
+   
+  </script>
+  <script>
     const serverName = 'http://localhost';
     const portNumber = 3000;
+    
 
     // Toggle between login and register forms
     const showLoginLink = document.getElementById('show-login');
@@ -144,12 +170,14 @@
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ username, email, password, confirmPassword, state: 'active' })
+          body: JSON.stringify({ username, email, password, confirmPassword })
         });
 
         const result = await response.json();
         if (response.ok) {
           iziToast.success({ title: 'Success', message: result.message });
+          // Redirect to login.html
+          window.location.href = './login.html';
         } else {
           iziToast.error({ title: 'Error', message: result.message });
         }
@@ -176,8 +204,22 @@
 
         const result = await response.json();
         if (response.ok) {
-          console.log(result);
+          console.log();
+
+           // assigning app state
+           const State = result.user.state;
+           State.user = {
+            username:result.user.username,
+            email:result.user.email,
+            password: result.user.password
+           }
+
+          StateManager.saveState(State);
+          console.log(State);
+
           iziToast.success({ title: 'Success', message: result.message });
+          // Redirect to index.html
+          window.location.href = './index.html';
         } else {
           iziToast.error({ title: 'Error', message: result.message });
         }
